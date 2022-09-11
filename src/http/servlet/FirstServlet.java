@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Enumeration;
+import java.util.Map;
 
 @WebServlet("/first")
 public class FirstServlet extends HttpServlet {
@@ -21,14 +22,12 @@ public class FirstServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-      // можем получить хедер по ключу
-       req.getHeader("user-agent");
-       // или получить все
-        var headerNames = req.getHeaderNames();
-        while (headerNames.hasMoreElements()) {
-            var header = headerNames.nextElement();
-            System.out.println(header);
-        }
+
+        // можно получить один или список параметров
+        var paramValue = req.getParameter("param");
+        var parameterMap = req.getParameterMap();
+
+
         resp.setContentType("text/html; charset=UTF-8");
         resp.setHeader("token", "12345");
         // кодировку лучше пердавать явно так либо:
@@ -36,6 +35,12 @@ public class FirstServlet extends HttpServlet {
         try (var writer = resp.getWriter()) {
             writer.write("<h1>Hello from first servlet</h2>");
         }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // отправили тут постманом запрос и отправили в теле вкладеой www-... параметры
+        var parameterMap = req.getParameterMap();
     }
 
     @Override
