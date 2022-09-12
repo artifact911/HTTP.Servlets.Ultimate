@@ -7,3 +7,4 @@
     Подключаемся к PostgreSQL postgres/root
     name: flight_repository
     Пакет lib с постгресом нужно добавить в WEB-INF которая в OUT, т.е. добавляем в WEB-INF и в out сама появится
+34. Lombok
