@@ -3,3 +3,7 @@
 29. Параметры запроса. Postman
 30. Работа с телом запроса. HTTP Body
 31. Скачивание файла с сервера
+33. Практика. Часть 1
+    Подключаемся к PostgreSQL postgres/root
+    name: flight_repository
+    Пакет lib с постгресом нужно добавить в WEB-INF которая в OUT
