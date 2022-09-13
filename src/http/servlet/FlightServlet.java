@@ -20,7 +20,7 @@ public class FlightServlet extends HttpServlet {
         resp.setContentType("text/html");
         resp.setCharacterEncoding(StandardCharsets.UTF_8.name());
 
-        try (var printWriter = resp.getWriter()) {
+        var printWriter = resp.getWriter();
             printWriter.write("<h1>Список перелетов:</h1>");
             printWriter.write("<ul>");
 
@@ -33,6 +33,5 @@ public class FlightServlet extends HttpServlet {
                         .formatted(flightDto.getId(), flightDto.getDescription()));
             });
             printWriter.write("</ul>");
-        }
     }
 }
