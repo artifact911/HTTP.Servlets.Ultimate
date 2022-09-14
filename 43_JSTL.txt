@@ -1,0 +1,62 @@
+JSTL (Java Standard Template Library) - позволяет избавиться от Java-кода в JSP-страницах, предоставляя интструменты
+        (tags, functions), например для осуществления:
+            - условных выражений
+            - циклов
+            - интернационализации
+            - форматирования
+        Т.е. подключив jstl мы можем воспользоваться какими-то новыми тегами и функциями, которых нет в HTML
+Для того, чтобы использовать JSTL в проекте нужно:
+        1. Добавить 2 зависимости в classpath для Tomcat 10:
+            jakarta.servlet.jsp.jstl-2.0.0jar
+            jakarta.servlet.jsp.jstl-api-2.0.0jar
+        Для более ранних версий Tomcat нужна только jstl-1.2.jar
+
+        2. На JSP-странице подключить JSTL с помощью директивы taglib:
+            <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+    Условные выражения:
+    - if
+        <c:if test="${условие}">
+            Выводимый результат
+        </c:if>
+
+        Пример: (префикс "с" получился из taglib который мы там назначили)
+             <c:if test="${requestScope.user.role eq 'ADMIN'}">
+                        <button type="submit">DELETE</button>
+             </c:if>
+
+    if-else
+        <c:choose>
+            <c:when test="${requestScope.user.role eq 'ADMIN'}">
+                <span>Hey Admin!</span>
+            </c:when>
+            <c:when test="${requestScope.user.role eq 'USER'}">
+                 <span>Hey User, ${requestScope.user.name}!</span>
+            </c:when>
+            <c:otherwise>
+                <span>Hey anonymous user!</span>
+            </c:otherwise>
+        </c:choose>
+
+    Циклы:
+    - forEach
+        <c:forEach var="ticket" items="${requestScope.tickets}">
+            <p>${ticket.seatNo}</p>
+        </c:forEach>
+
+         <c:forEach var="index" begin="0" end="10">
+            <p>${requestScope.tickets[index].seatNo}</p>
+         </c:forEach>
+
+Функции JSTL
+    Для использования вспомогательных функций JSTL на JSP странице следует подключать библиотеку:
+        <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+    - ${fn:length(Object object)} - подсчитывает число элементов в коллекции или длину строки;
+    - ${fn:toUpperCase(String row)} - изменяет регистр строки;
+    - ${fn:substring(String row, int begin, int end)} - извлекает подстроку;
+    - ${fn:trim(String row)} - удаляет пробелы с обоих концов строки;
+
+Интернациолизация
+    Для работы с механизмом интернационализации JSTL необходимо подключить к JSP странице библиотеку fmt:
+         <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>

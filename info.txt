@@ -22,3 +22,5 @@
     localhost:8081/tickets.jsp?flightId=3
 41. JSP Директивы
 42. Expression Language. EL
+43. JSTL. Теория
+    скачали и добавили библиотеки
