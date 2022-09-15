@@ -48,7 +48,7 @@ JSTL (Java Standard Template Library) - позволяет избавиться 
             <p>${requestScope.tickets[index].seatNo}</p>
          </c:forEach>
 
-Функции JSTL
+Функции JSTL. Используются ТОЛЬКО внутри ExpressionLanguage
     Для использования вспомогательных функций JSTL на JSP странице следует подключать библиотеку:
         <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
