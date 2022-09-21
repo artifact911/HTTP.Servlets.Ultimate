@@ -28,3 +28,4 @@
 45. HTML Forms
 46. Практика. Часть 2
 47. File upload. Multipart form-data
+48. Tag img

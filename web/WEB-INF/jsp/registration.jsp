@@ -6,6 +6,16 @@
     <title>Title</title>
 </head>
 <body>
+
+<%--    <audio></audio>--%>
+<%--    <video></video>--%>
+
+    <img height="300" width="300" src="${pageContext.request.contextPath}/images/users/42.jpeg"
+    alt="https://avatarko.ru/img/kartinka/33/multfilm_lyagushka_32117.jpg">
+
+<%--    <img src="https://avatarko.ru/img/kartinka/33/multfilm_lyagushka_32117.jpg">--%>
+
+
 <%--добавили enctype тк хотим отправлять файлы--%>
     <form action="${pageContext.request.contextPath}/registration" method="post" enctype="multipart/form-data">
         <label for="name">Name:
