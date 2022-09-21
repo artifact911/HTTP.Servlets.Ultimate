@@ -5,13 +5,14 @@ import http.entity.Gender;
 import http.entity.Role;
 import http.entity.User;
 import http.util.LocalDateFormatter;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class CreateUserMapper implements Mapper<CreateUserDto, User> {
 
+    private static final String IMAGE_FOLDER = "users/";
     private static final CreateUserMapper INSTANCE = new CreateUserMapper();
-
-    private CreateUserMapper() {
-    }
 
     public static CreateUserMapper getInstance() {
         return INSTANCE;
@@ -21,6 +22,7 @@ public class CreateUserMapper implements Mapper<CreateUserDto, User> {
     public User mapFrom(CreateUserDto object) {
         return User.builder()
                 .name(object.getName())
+                .image(IMAGE_FOLDER + object.getImage().getSubmittedFileName())
                 .birthday(LocalDateFormatter.format(object.getBirthday()))
                 .email(object.getEmail())
                 .password(object.getPassword())

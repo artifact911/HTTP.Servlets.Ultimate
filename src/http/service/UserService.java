@@ -2,25 +2,23 @@ package http.service;
 
 import http.dao.UserDao;
 import http.dto.CreateUserDto;
-import http.entity.User;
 import http.exception.ValidationException;
 import http.mapper.CreateUserMapper;
 import http.validator.CreateUserValidator;
-import http.validator.ValidationResult;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+import lombok.SneakyThrows;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class UserService {
 
     private static final UserService INSTANCE = new UserService();
-
     private final CreateUserValidator createUserValidator = CreateUserValidator.getInstance();
-
     private final UserDao userDao = UserDao.getInstance();
-
     private final CreateUserMapper createUserMapper = CreateUserMapper.getInstance();
+    private final ImageService imageService = ImageService.getInstance();
 
-    private UserService() {
-    }
-
+    @SneakyThrows
     public Integer create(CreateUserDto userDto) {
         // validation
         var validationResult = createUserValidator.isValid(userDto);
@@ -30,6 +28,8 @@ public class UserService {
 
         // map
         var userEntity = createUserMapper.mapFrom(userDto);
+
+        imageService.upload(userEntity.getImage(), userDto.getImage().getInputStream());
 
         // userDao.save
         userDao.save(userEntity);

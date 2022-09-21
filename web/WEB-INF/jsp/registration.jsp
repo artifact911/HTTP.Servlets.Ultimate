@@ -1,20 +1,25 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
-
 <html>
 <head>
     <title>Title</title>
 </head>
 <body>
-    <form action="/registration" method="post">
+<%--добавили enctype тк хотим отправлять файлы--%>
+    <form action="${pageContext.request.contextPath}/registration" method="post" enctype="multipart/form-data">
         <label for="name">Name:
             <input type="text" name="name" id="name">
         </label><br>
         <label for="birthday">Birthday:
-            <input type="date" name="birthday" id="birthday">
+<%--            required типа обязательное поле--%>
+            <input type="date" name="birthday" id="birthday" required>
         </label><br>
+
+        <label for="emailId">Image:
+            <input type="file" name="image" id="imageId" required>
+        </label><br>
+
         <label for="emailId">Email:
             <input type="text" name="email" id="emailId">
         </label><br>
@@ -30,7 +35,7 @@
 
         <c:forEach var="gender" items="${requestScope.genders}">
             <input type="radio" name="gender" value="${gender}"> ${gender}
-        </c:forEach>
+        </c:forEach><br>
 
         <button type="submit">Send</button>
 
