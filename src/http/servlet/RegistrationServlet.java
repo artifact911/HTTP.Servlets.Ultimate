@@ -10,7 +10,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.Part;
 import lombok.SneakyThrows;
 
 import java.io.IOException;
@@ -32,8 +31,8 @@ public class RegistrationServlet extends HttpServlet {
         req.setAttribute("roles", List.of("USER", "ADMIN"));
         req.setAttribute("genders", List.of("MALE", "FEMALE"));
 
-       req.getRequestDispatcher(JspHelper.getPath("registration"))
-               .forward(req, resp);
+        req.getRequestDispatcher(JspHelper.getPath("registration"))
+                .forward(req, resp);
     }
 
     // добавим в БД пользователю поле image. Это поле будет хранить путь к нашей картинке, а не массив байт

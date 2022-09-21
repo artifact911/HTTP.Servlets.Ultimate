@@ -4,7 +4,9 @@ import http.entity.Flight;
 import http.entity.FlightStatus;
 import http.util.ConnectionManager;
 
-import java.sql.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -43,7 +45,6 @@ public class FlightDao implements Dao<Long, Flight> {
             throw new RuntimeException(e);
         }
     }
-
 
 
     @Override

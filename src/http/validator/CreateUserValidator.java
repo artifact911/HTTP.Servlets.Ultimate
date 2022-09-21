@@ -19,11 +19,11 @@ public class CreateUserValidator implements Validator<CreateUserDto> {
     public ValidationResult isValid(CreateUserDto object) {
         var validationResult = new ValidationResult();
 
-        if(!LocalDateFormatter.isValid(object.getBirthday())) {
+        if (!LocalDateFormatter.isValid(object.getBirthday())) {
             validationResult.add(Error.of("invalid.birthday", "Birthday is invalid"));
         }
 
-        if(object.getGender() == null || Gender.valueOf(object.getGender()) == null) {
+        if (object.getGender() == null || Gender.valueOf(object.getGender()) == null) {
             validationResult.add(Error.of("invalid.gender", "Gender is invalid"));
         }
 

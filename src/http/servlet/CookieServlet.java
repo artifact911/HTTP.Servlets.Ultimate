@@ -25,7 +25,7 @@ public class CookieServlet extends HttpServlet {
 //        var cookie = req.getHeader("cookie");
         var cookies = req.getCookies();
 
-        if(cookies == null || Arrays.stream(cookies)
+        if (cookies == null || Arrays.stream(cookies)
                 .filter(cookie -> UNIQUE_ID.equals(cookie.getName()))
                 .findFirst()
                 .isEmpty()) {
