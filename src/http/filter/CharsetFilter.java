@@ -12,8 +12,9 @@ import java.nio.charset.StandardCharsets;
 //@WebFilter(value = "/*", servletNames = {
 //        "RegistrationServlet"
 //})
-@WebFilter(value = "/*", servletNames = {
-        "RegistrationServlet"},
+@WebFilter(value = "/*",
+//        servletNames = {
+//        "RegistrationServlet"},
         initParams = {
                 @WebInitParam(name = "param1", value = "paramValue")},
         dispatcherTypes = DispatcherType.REQUEST)
