@@ -21,13 +21,19 @@ import java.util.List;
 // maxRequestSize - максимальный размер реквеста
 // fileSizeThreshold - файлы ТОЛЬКО большего размера будут сохраняться на диск в location, в байтах. Меньше - будет держать в inMemory
 @MultipartConfig(fileSizeThreshold = 1024 * 1024)
-@WebServlet("/registration")
+@WebServlet(value = "/registration", name = "RegistrationServlet")
 public class RegistrationServlet extends HttpServlet {
 
     private final UserService userService = UserService.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        // пробрасывали посмотреть на страничку при ошибке
+//        if (true) {
+//            throw new RuntimeException();
+//        }
+
         req.setAttribute("roles", List.of("USER", "ADMIN"));
         req.setAttribute("genders", List.of("MALE", "FEMALE"));
 
