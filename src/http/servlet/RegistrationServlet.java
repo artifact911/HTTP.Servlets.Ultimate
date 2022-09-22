@@ -15,13 +15,15 @@ import lombok.SneakyThrows;
 import java.io.IOException;
 import java.util.List;
 
+import static http.util.UrlPath.REGISTRATION;
+
 // @MultipartConfig
 // location - куда будут сохраняться принятые файлы у нас на серве
 // maxFileSize - максимальный размер передаваемого файла
 // maxRequestSize - максимальный размер реквеста
 // fileSizeThreshold - файлы ТОЛЬКО большего размера будут сохраняться на диск в location, в байтах. Меньше - будет держать в inMemory
 @MultipartConfig(fileSizeThreshold = 1024 * 1024)
-@WebServlet(value = "/registration", name = "RegistrationServlet")
+@WebServlet(value = REGISTRATION, name = "RegistrationServlet")
 public class RegistrationServlet extends HttpServlet {
 
     private final UserService userService = UserService.getInstance();

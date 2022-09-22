@@ -12,7 +12,9 @@ import lombok.SneakyThrows;
 
 import java.io.IOException;
 
-@WebServlet("/login")
+import static http.util.UrlPath.LOGIN;
+
+@WebServlet(LOGIN)
 public class LoginServlet extends HttpServlet {
 
     private final UserService userService = UserService.getInstance();
